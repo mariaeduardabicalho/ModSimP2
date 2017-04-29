@@ -55,7 +55,7 @@ def mulhersroupa(Tp,tempo):
 temperatura_pele_mulher=odeint(mulhersroupa,Tp[0],tempo)
 plt.plot(tempo,temperatura_pele_mulher)
 plt.ylabel('Temperatura da pele mulher(°K)')
-plt.title('Temperatura da mulher com roupas leves')
+plt.title('Temperatura da pele da mulher com roupas leves')
 plt.xlabel('tempo(s)')
 plt.grid(True)
 plt.show()
@@ -67,27 +67,27 @@ def mulherroupagrudada(Tp,tempo):
 temperatura_mulher_roupagrudada=odeint(mulherroupagrudada,Tp[0],tempo)
 plt.plot(tempo,temperatura_mulher_roupagrudada)
 plt.ylabel('Temperatura da pele mulher(°K)')
-plt.title('Temperatura da mulher com roupas grudada')
+plt.title('Temperatura da pele da mulher com roupas grudada')
 plt.xlabel('tempo(s)')
 plt.grid(True)
 plt.show()
 
 T2=[295,295]
 
-t=np.arange(0,4000,0.1)
+t=np.arange(0,12000,0.1)
 def mulherroupasolta(T2,t):
     Tai=T2[0]
     Tp=T2[1] 
-    dTAdt=(radsol(erp)+transp(Tai,Tp)-conveccao(Tai,Tp,hma)-conveccao(Ta,Tp,2))/(m*c)
-    dTMdt=(conveccao(Ta,Tp,h)-transp(Tai,Tp))/(m*c)
+    dTAdt=(radsol(erp)+(transp(Tai,Tp)*(10**(-3)))-conveccao(Tai,Tp,hma)-conveccao(Ta,Tp,2))/(m*c)
+    dTMdt=(conveccao(Ta,Tp,h)-(transp(Tai,Tp)*(10**(-3))))/(m*c)
     return [dTAdt,dTMdt]
 
 
 temperatura_mulher_roupasolta=odeint(mulherroupasolta,T2,t)
 plt.plot(t,temperatura_mulher_roupasolta[:,0],'bo')
 plt.plot(t,temperatura_mulher_roupasolta[:,1])
-plt.ylabel('Temperaturas mulher(°K)')
-plt.title('Temperatura da mulher e da roupa solta')
+plt.ylabel('Temperaturas (°K)')
+plt.title('Temperatura da pele da mulher e do ar entre a roupa solta')
 plt.xlabel('tempo(s)')
 plt.grid(True)
 plt.show()
