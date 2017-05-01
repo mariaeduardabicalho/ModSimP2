@@ -53,7 +53,7 @@ def mulhersroupa(Tp,tempo):
     return dTmdt
 
 temperatura_pele_mulher=odeint(mulhersroupa,Tp[0],tempo)
-plt.plot(tempo,temperatura_pele_mulher)
+plt.plot(tempo,temperatura_pele_mulher, 'b')
 plt.ylabel('Temperatura da pele mulher(°K)')
 plt.title('Temperatura da pele da mulher com roupas leves')
 plt.xlabel('tempo(s)')
@@ -65,9 +65,9 @@ def mulherroupagrudada(Tp,tempo):
     return dTmdt
     
 temperatura_mulher_roupagrudada=odeint(mulherroupagrudada,Tp[0],tempo)
-plt.plot(tempo,temperatura_mulher_roupagrudada)
+plt.plot(tempo,temperatura_mulher_roupagrudada, 'r')
 plt.ylabel('Temperatura da pele mulher(°K)')
-plt.title('Temperatura da pele da mulher com roupas grudada')
+plt.title('Temperatura da pele da mulher com traje muçulmano')
 plt.xlabel('tempo(s)')
 plt.grid(True)
 plt.show()
@@ -85,18 +85,18 @@ def mulherroupasolta(T2,t):
 
 temperatura_mulher_roupasolta=odeint(mulherroupasolta,T2,t)
 plt.plot(t,temperatura_mulher_roupasolta[:,0],'bo')
-plt.plot(t,temperatura_mulher_roupasolta[:,1])
+plt.plot(t,temperatura_mulher_roupasolta[:,1], 'g')
 plt.ylabel('Temperaturas (°K)')
-plt.title('Temperatura da pele da mulher e do ar entre a roupa solta')
+plt.title('Temperatura da pele da mulher e do ar entre o traje beduíno')
 plt.xlabel('tempo(s)')
 plt.grid(True)
 plt.show()
 
-plt.plot(tempo,temperatura_pele_mulher)
-plt.plot(t,temperatura_mulher_roupasolta[:,1])
-plt.plot(tempo,temperatura_mulher_roupagrudada)
+plt.plot(tempo,temperatura_pele_mulher, 'b')
+plt.plot(t,temperatura_mulher_roupasolta[:,1], 'g')
+plt.plot(tempo,temperatura_mulher_roupagrudada, 'r')
 plt.ylabel('Temperaturas (°K)')
-plt.title('Temperatura da pele da mulher e das três ciecunstâncias')
+plt.title('Temperatura da pele da mulher nas três circunstâncias')
 plt.xlabel('tempo(s)')
 plt.grid(True)
 plt.show()
